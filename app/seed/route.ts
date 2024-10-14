@@ -1,13 +1,26 @@
 // import bcrypt from 'bcrypt';
 // import { db } from '@vercel/postgres';
-// import { invoices, customers, revenue, users } from '../lib/placeholder-data';
+// import { invoices, customers, revenue, users2 } from '../lib/placeholder-data';
 
 // const client = await db.connect();
 
-// async function seedUsers() {
+// async function seedUsersTable() {
 //   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 //   await client.sql`
 //     CREATE TABLE IF NOT EXISTS users (
+//       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//       name VARCHAR(255) NOT NULL,
+//       age TEXT,
+//       title TEXT NOT NULL,
+//       hometown TEXT
+//     );
+//   `;
+// }
+
+// async function seedUsers2() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+//   await client.sql`
+//     CREATE TABLE IF NOT EXISTS users2 (
 //       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
 //       name VARCHAR(255) NOT NULL,
 //       email TEXT NOT NULL UNIQUE,
@@ -16,10 +29,10 @@
 //   `;
 
 //   const insertedUsers = await Promise.all(
-//     users.map(async (user) => {
+//     users2.map(async (user) => {
 //       const hashedPassword = await bcrypt.hash(user.password, 10);
 //       return client.sql`
-//         INSERT INTO users (id, name, email, password)
+//         INSERT INTO users2 (id, name, email, password)
 //         VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
 //         ON CONFLICT (id) DO NOTHING;
 //       `;
@@ -101,22 +114,19 @@
 //   return insertedRevenue;
 // }
 
-export async function GET() {
-  return Response.json({
-    message:
-      'Uncomment this file and remove this line. You can delete this file when you are finished.',
-  });
-  // try {
-  //   await client.sql`BEGIN`;
-  //   await seedUsers();
-  //   await seedCustomers();
-  //   await seedInvoices();
-  //   await seedRevenue();
-  //   await client.sql`COMMIT`;
+// export async function GET() {
+//   try {
+//     await client.sql`BEGIN`;
+//     //await seedUsersTable();
+//     await seedUsers2();
+//     await seedCustomers();
+//     await seedInvoices();
+//     await seedRevenue();
+//     await client.sql`COMMIT`;
 
-  //   return Response.json({ message: 'Database seeded successfully' });
-  // } catch (error) {
-  //   await client.sql`ROLLBACK`;
-  //   return Response.json({ error }, { status: 500 });
-  // }
-}
+//     return Response.json({ message: 'Database seeded successfully' });
+//   } catch (error) {
+//     await client.sql`ROLLBACK`;
+//     return Response.json({ error }, { status: 500 });
+//   }
+// }
