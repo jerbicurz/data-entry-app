@@ -10,13 +10,6 @@ export type UserTable = {
   hometown: string;
 }
 
-export type UserInputRequest = {
-  name: string;
-  age: string;
-  title: string;
-  hometown: string;
-}
-
 export type User = {
   id: string;
   name: string;
