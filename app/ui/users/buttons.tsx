@@ -6,7 +6,7 @@ import Link from "next/link";
 export function CreateUserButton() {
   return (
     <Link
-      href="/dashboard/users"
+      href="/dashboard"
       className="flex h-10 mt-2 items-center rounded-lg bg-blue-600 px-2 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
     >
       <PlusIcon className="h-5 pr-2 md:ml-4" />
