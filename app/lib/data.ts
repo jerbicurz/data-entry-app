@@ -6,18 +6,9 @@ import {
   InvoicesTable,
   LatestInvoiceRaw,
   Revenue,
-  UserInputRequest,
   UserTable,
 } from './definitions';
 import { formatCurrency } from './utils';
-
-
-export async function insertUser(userInput: UserInputRequest) {
-    await sql`
-      INSERT INTO users (name, age, title, hometown)
-      VALUES (${userInput.name}, ${userInput.age}, ${userInput.title}, ${userInput.hometown})
-    `;
-}
 
 const ITEMS_PER_PAGE_USERS = 6;
 export async function fetchUsers(currentPage: number) {
